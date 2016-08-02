@@ -26,7 +26,7 @@
 
 
       {% if app.request.get('_route') == 'reponse1' %}
-      <td><a style="color:red;" href="{{ path('reponse1', { 'id': quiz.id }) }}"> {{ quiz.reponse1 }} </a></td>
+      <td><a style="color:red;"> {{ quiz.reponse1 }} </a></td>
 
       {% endif %}
     </tr>
@@ -43,7 +43,7 @@
     {% endif %}
 
     {% if app.request.get('_route') == 'reponse2' %}
-     <td><a style="color:red;" href="{{ path('reponse2', { 'id': quiz.id }) }}"> {{ quiz.reponse2 }} </a></td>
+     <td><a style="color:red;"> {{ quiz.reponse2 }} </a></td>
 
     {% endif %}
   </tr>
@@ -61,7 +61,7 @@
 
 
     {% if app.request.get('_route') == 'reponse3' %}
-    <td><a style="color:green;" href="{{ path('reponse3', { 'id': quiz.id }) }}"> {{ quiz.reponse3 }} </a></td>
+    <td><a style="color:green;"> {{ quiz.reponse3 }} </a></td>
 
     {% endif %}
   </tr>
@@ -80,7 +80,7 @@
 
 
     {% if app.request.get('_route') == 'reponse4' %}
-    <td><a style="color:red;" href="{{ path('reponse4', { 'id': quiz.id }) }}"> {{ quiz.reponse4 }} </a></td>
+    <td><a style="color:red;"> {{ quiz.reponse4 }} </a></td>
     {% else %}
 
     {% endif %}

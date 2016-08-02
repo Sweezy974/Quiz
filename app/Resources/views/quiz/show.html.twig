@@ -1,48 +1,110 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Quiz</h1>
+<h1>Quiz</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ quiz.id }}</td>
-            </tr>
-            <tr>
-                <th>Question</th>
-                <td>{{ quiz.question }}</td>
-            </tr>
-            <tr>
-                <th>Reponse1</th>
-                <td>{{ quiz.reponse1 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse2</th>
-                <td>{{ quiz.reponse2 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse3</th>
-                <td>{{ quiz.reponse3 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse4</th>
-                <td>{{ quiz.reponse4 }}</td>
-            </tr>
-        </tbody>
-    </table>
+<table>
+  <tbody>
+    <tr>
+      <th>Id</th>
+      <td>{{ quiz.id }}</td>
+    </tr>
+    <tr>
+      <th>Question</th>
+      <td>{{ quiz.question }}</td>
+    </tr>
+    <tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('quiz_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('quiz_edit', { 'id': quiz.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+      <th>Reponse1</th>
+
+      {% if (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse3') %}
+      <td><a>{{ quiz.reponse1 }} </a></td>
+      {% elseif app.request.get('_route') == 'quiz_show'  %}
+      <td><a href="{{ path('reponse1', { 'id': quiz.id }) }}"> {{ quiz.reponse1 }} </a></td>
+    {% endif %}
+
+
+
+      {% if app.request.get('_route') == 'reponse1' %}
+      <td><a style="color:red;" href="{{ path('reponse1', { 'id': quiz.id }) }}"> {{ quiz.reponse1 }} </a></td>
+
+      {% endif %}
+    </tr>
+
+
+
+
+    <tr>
+      <th>Reponse2</th>
+      {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse3') %}
+      <td><a>{{ quiz.reponse2 }} </a></td>
+      {% elseif app.request.get('_route') == 'quiz_show'  %}
+      <td><a href="{{ path('reponse2', { 'id': quiz.id }) }}"> {{ quiz.reponse2 }} </a></td>
+    {% endif %}
+
+    {% if app.request.get('_route') == 'reponse2' %}
+     <td><a style="color:red;" href="{{ path('reponse2', { 'id': quiz.id }) }}"> {{ quiz.reponse2 }} </a></td>
+
+    {% endif %}
+  </tr>
+  <tr>
+
+
+
+    <th>Reponse3</th>
+
+    {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse2') %}
+    <td><a>{{ quiz.reponse3 }} </a></td>
+    {% elseif app.request.get('_route') == 'quiz_show'  %}
+    <td><a href="{{ path('reponse3', { 'id': quiz.id }) }}"> {{ quiz.reponse3 }} </a></td>
+  {% endif %}
+
+
+    {% if app.request.get('_route') == 'reponse3' %}
+    <td><a style="color:green;" href="{{ path('reponse3', { 'id': quiz.id }) }}"> {{ quiz.reponse3 }} </a></td>
+
+    {% endif %}
+  </tr>
+  <tr>
+
+
+
+
+
+    <th>Reponse4</th>
+    {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3')  %}
+    <td><a>{{ quiz.reponse4 }} </a></td>
+    {% elseif app.request.get('_route') == 'quiz_show'  %}
+    <td><a href="{{ path('reponse4', { 'id': quiz.id }) }}"> {{ quiz.reponse4 }} </a></td>
+  {% endif %}
+
+
+    {% if app.request.get('_route') == 'reponse4' %}
+    <td><a style="color:red;" href="{{ path('reponse4', { 'id': quiz.id }) }}"> {{ quiz.reponse4 }} </a></td>
+    {% else %}
+
+    {% endif %}
+
+  </tr>
+</tbody>
+</table>
+
+<a href="javascript:history.go(-1)">Previous</a>
+<a href="{{path('quiz_show', {'id': quiz.id+1 }) }}">Next</a>
+
+
+
+<!-- <ul>
+  <li>
+    <a href="{{ path('quiz_index') }}">Back to the list</a>
+  </li>
+  <li>
+    <a href="{{ path('quiz_edit', { 'id': quiz.id }) }}">Edit</a>
+  </li>
+  <li>
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+  </li>
+</ul> -->
 {% endblock %}

@@ -137,4 +137,65 @@ class QuizController extends Controller
             ->getForm()
         ;
     }
+
+
+
+    /**
+     *
+     * @Route("/{id}/reponse1", name="reponse1")
+     * @Method("GET")
+     */
+    public function reponse1Action(Quiz $quiz)
+    {
+        $deleteForm = $this->createDeleteForm($quiz);
+      return $this->render('quiz/show.html.twig', array(
+          'quiz' => $quiz,
+              'delete_form' => $deleteForm->createView(),
+      ));
+    }
+
+    /**
+     *
+     * @Route("/{id}/reponse2", name="reponse2")
+     * @Method("GET")
+     */
+    public function reponse2Action(Quiz $quiz)
+    {
+        $deleteForm = $this->createDeleteForm($quiz);
+      return $this->render('quiz/show.html.twig', array(
+          'quiz' => $quiz,
+              'delete_form' => $deleteForm->createView(),
+      ));
+    }
+
+    /**
+     *
+     * @Route("/{id}/reponse3", name="reponse3")
+     * @Method("GET")
+     */
+    public function reponse3Action(Quiz $quiz)
+    {
+        $deleteForm = $this->createDeleteForm($quiz);
+      return $this->render('quiz/show.html.twig', array(
+          'quiz' => $quiz,
+              'delete_form' => $deleteForm->createView(),
+      ));
+    }
+
+    /**
+     *
+     * @Route("/{id}/reponse4", name="reponse4")
+     * @Method("GET")
+     */
+    public function reponse4Action(Quiz $quiz)
+    {
+        $deleteForm = $this->createDeleteForm($quiz);
+      return $this->render('quiz/show.html.twig', array(
+          'quiz' => $quiz,
+              'delete_form' => $deleteForm->createView(),
+      ));
+    }
+
+
+
 }

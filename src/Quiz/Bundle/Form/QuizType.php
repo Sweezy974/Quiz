@@ -22,7 +22,7 @@ class QuizType extends AbstractType
             ->add('reponse4')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

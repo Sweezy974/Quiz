@@ -5,9 +5,17 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="" href="{{ asset ('css/style.css') }}">
+        <link rel="stylesheet" type="" href="{{ asset ('css/bootstrap.min.css') }}">
+        <script src="{{ asset ('script/bootstrap.min.js') }}"></script>
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascript %}
+        <script src="{{ asset ('script/jquery.js')}}"></script>
+        <script src="{{ asset ('script/bootstrap.min.js')}}"></script>
+        <script src="{{ asset ('script/form.min.js')}}"></script>
+
+        {% endblock %}
     </body>
 </html>

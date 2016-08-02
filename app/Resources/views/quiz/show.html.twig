@@ -1,114 +1,97 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Quiz</h1>
+<style media="screen">
+  a{
+    color: #000;
+  }
+  .btn{
+    border:1px solid #000 !important;
+    margin-top: 20px;
+  }
+  .btn:hover{
+background-color: #f5f5f5;
+  }
+</style>
+<h1 class="text-center">Welcome to my quiz</h1>
 
-<table>
-  <tbody>
-    <tr>
-      <th>Id</th>
-      <td>{{ quiz.id }}</td>
-    </tr>
-    <tr>
-      <th>Question</th>
-      <td>{{ quiz.question }}</td>
-    </tr>
-    <tr>
 
-      <th>Reponse1</th>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+<h2 class="text-center">
+{{ quiz.question }}
+</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
       {% if (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse3') %}
-      <td><a>{{ quiz.reponse1 }} </a></td>
+    <a class="btn" style="width:100%;">{{ quiz.reponse1 }} </a>
       {% elseif app.request.get('_route') == 'quiz_show'  %}
-      <td><a href="{{ path('reponse1', { 'id': quiz.id }) }}"> {{ quiz.reponse1 }} </a></td>
-    {% endif %}
-
-
+    <a class="btn" style="width:100%;" href="{{ path('reponse1', { 'id': quiz.id }) }}"> {{ quiz.reponse1 }} </a>
+      {% endif %}
 
       {% if app.request.get('_route') == 'reponse1' %}
-      <td><a style="color:red;"> {{ quiz.reponse1 }} </a></td>
-
+    <a class="btn" style="background-color:red; color:white; width:100%;"> {{ quiz.reponse1 }} </a>
       {% endif %}
-    </tr>
+    </div>
 
 
-
-
-    <tr>
-      <th>Reponse2</th>
+    <div class="col-md-6">
       {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse3') %}
-      <td><a>{{ quiz.reponse2 }} </a></td>
+    <a class="btn" style="width:100%;">{{ quiz.reponse2 }} </a>
       {% elseif app.request.get('_route') == 'quiz_show'  %}
-      <td><a href="{{ path('reponse2', { 'id': quiz.id }) }}"> {{ quiz.reponse2 }} </a></td>
-    {% endif %}
+    <a class="btn" style="width:100%;" href="{{ path('reponse2', { 'id': quiz.id }) }}"> {{ quiz.reponse2 }} </a>
+      {% endif %}
 
-    {% if app.request.get('_route') == 'reponse2' %}
-     <td><a style="color:red;"> {{ quiz.reponse2 }} </a></td>
-
-    {% endif %}
-  </tr>
-  <tr>
+      {% if app.request.get('_route') == 'reponse2' %}
+    <a class="btn" style="background-color:red; color:white; width:100%;"> {{ quiz.reponse2 }} </a>
+      {% endif %}
+    </div>
 
 
+    <div class="col-md-6">
+            {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse2') %}
+    <a class="btn" style="width:100%;">{{ quiz.reponse3 }} </a>
+      {% elseif app.request.get('_route') == 'quiz_show'  %}
+    <a class="btn" style="width:100%;" href="{{ path('reponse3', { 'id': quiz.id }) }}"> {{ quiz.reponse3 }} </a>
+      {% endif %}
 
-    <th>Reponse3</th>
+      {% if app.request.get('_route') == 'reponse3' %}
+    <a class="btn" style="background-color:green; color:white; width:100%;"> {{ quiz.reponse3 }} </a>
+      {% endif %}
+    </div>
 
-    {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse4') or (app.request.get('_route') == 'reponse2') %}
-    <td><a>{{ quiz.reponse3 }} </a></td>
-    {% elseif app.request.get('_route') == 'quiz_show'  %}
-    <td><a href="{{ path('reponse3', { 'id': quiz.id }) }}"> {{ quiz.reponse3 }} </a></td>
-  {% endif %}
+    <div class="col-md-6">
+  {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3')  %}
+    <a class="btn" style="width:100%;">{{ quiz.reponse4 }} </a>
+      {% elseif app.request.get('_route') == 'quiz_show'  %}
+    <a class="btn" style="width:100%;" href="{{ path('reponse4', { 'id': quiz.id }) }}"> {{ quiz.reponse4 }} </a>
+      {% endif %}
 
+      {% if app.request.get('_route') == 'reponse4' %}
+    <a class="btn" style="background-color:red; color:white; width:100%;"> {{ quiz.reponse4 }} </a>
+      {% endif %}
+    </div>
 
-    {% if app.request.get('_route') == 'reponse3' %}
-    <td><a style="color:green;"> {{ quiz.reponse3 }} </a></td>
-
-    {% endif %}
-  </tr>
-  <tr>
-
-
-
-
-
-    <th>Reponse4</th>
-    {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3')  %}
-    <td><a>{{ quiz.reponse4 }} </a></td>
-    {% elseif app.request.get('_route') == 'quiz_show'  %}
-    <td><a href="{{ path('reponse4', { 'id': quiz.id }) }}"> {{ quiz.reponse4 }} </a></td>
-  {% endif %}
+  </div>
 
 
-    {% if app.request.get('_route') == 'reponse4' %}
-    <td><a style="color:red;"> {{ quiz.reponse4 }} </a></td>
+
+<div class="row text-center">
+  <div class="col-md-12">
+
+    {% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3') or (app.request.get('_route') == 'reponse4') %}
+    <a href="javascript:history.go(-2)" class="btn">Previous</a>
     {% else %}
-
-    {% endif %}
-
-  </tr>
-</tbody>
-</table>
-
-{% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3') or (app.request.get('_route') == 'reponse4') %}
-<a href="javascript:history.go(-2)">Previous</a>
-{% else %}
-<a href="javascript:history.go(-1)">Previous</a>
-{% endif %}
-<a href="{{path('quiz_show', {'id': quiz.id+1 }) }}">Next</a>
+    <a href="javascript:history.go(-1)" class="btn">Previous</a>
+  {% endif %}
+  <a href="{{path('quiz_show', {'id': quiz.id+1 }) }}" class="btn">Next</a>
+  </div>
+</div>
 
 
+</div>
 
-<!-- <ul>
-  <li>
-    <a href="{{ path('quiz_index') }}">Back to the list</a>
-  </li>
-  <li>
-    <a href="{{ path('quiz_edit', { 'id': quiz.id }) }}">Edit</a>
-  </li>
-  <li>
-    {{ form_start(delete_form) }}
-    <input type="submit" value="Delete">
-    {{ form_end(delete_form) }}
-  </li>
-</ul> -->
 {% endblock %}

@@ -89,7 +89,11 @@
 </tbody>
 </table>
 
+{% if (app.request.get('_route') == 'reponse1') or (app.request.get('_route') == 'reponse2') or (app.request.get('_route') == 'reponse3') or (app.request.get('_route') == 'reponse4') %}
 <a href="javascript:history.go(-2)">Previous</a>
+{% else %}
+<a href="javascript:history.go(-1)">Previous</a>
+{% endif %}
 <a href="{{path('quiz_show', {'id': quiz.id+1 }) }}">Next</a>
 
 
